@@ -19,5 +19,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 
-Route::middleware('auth:api')->get('/tweets', 'TweetController@index');
-Route::middleware('auth:api')->post('/tweets', 'TweetController@store');
+Route::middleware(['auth:api', 'scope:view-tweet'])->get('/tweets', 'TweetController@index');
+Route::middleware(['auth:api', 'scope:post-tweet'])->post('/tweets', 'TweetController@store');
